@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    background-color: #14131b; 
+    font-family: "tenon", sans-serif;
+    text-align: right;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+
+h1 {
+    font-weight: 800;
+    color: whitesmoke;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 20px;
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+
+#charInput1, #charInput2 {
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: 50px;
+    height: 15px;
+    text-align: center;
+    z-index: 10;
+}
+
+#submitButton {
+    border-radius: 20px;
+    padding: 15px; 
+    border: none;
+    cursor: pointer;
+    background-image: url('sun.png');
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px; /* Increase width to ensure the button is centered */
+    height: 30px; /* Increase height to match width */
+    z-index: 10;
+}
+
+#submitButton:hover {
+    background-color: rgb(240, 240, 211);
+}
+
+#displayedImage {
+    display: none;
+    height: 90vh;
+    border-radius: 10px;
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.rotated-text {
+    font-size: 85px;
+    color: whitesmoke;
+    display: flex;
+    font-family: "tenon", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    position: absolute;
+    margin-left: -20rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg) scaleY(1.8);
+    z-index: 10;
+}
+
+#errorMessage {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    z-index: 10;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 500;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 250); 
+}

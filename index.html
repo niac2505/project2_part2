@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 INPUT 1 OUTPUT TEMPLATE</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://use.typekit.net/fnt4xlt.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        <!-- <h1>UNION SHADOWS</h1> -->
+        <div class="input-group">
+            <input type="text" id="charInput1" maxlength="1">
+            <input type="text" id="charInput2" maxlength="1">
+            <button onclick="displayImage()" id="submitButton"></button>
+        </div>
+    </div>    
+
+    <img id="displayedImage" src="" alt="Displayed Image" style="display:none;">
+
+    <!-- Image Display Script Below -->
+    <script>
+        
+function displayImage() {
+    const imgElement = document.getElementById("displayedImage");
+    const errorElement = document.getElementById("errorMessage");
+
+    // Get uppercase input values
+    const input1 = document.getElementById("charInput1").value.toUpperCase();
+    const input2 = document.getElementById("charInput2").value.toUpperCase();
+
+    // Regular expression to check if input is a single letter (A-Z)
+    const validLetterRegex = /^[A-Z]$/;
+
+    // Validate inputs (check if they are letters)
+    if (!validLetterRegex.test(input1) || !validLetterRegex.test(input2)) {
+        errorElement.textContent = "Error: Please enter a single letter (A-Z) in both fields.";
+        imgElement.src = "error.png";
+        imgElement.style.display = "block";
+        return;
+    } else {
+        errorElement.textContent = ""; // Clear error message
+    }
+
+    const seasons = {
+        "winter": ["I", "L", "Y", "Z", "X", "V"],
+        "spring": ["C", "G", "J", "O", "Q", "S", "U"],
+        "summer": ["A", "B", "D", "K", "M", "N", "W"],
+        "fall": ["E", "F", "H", "P", "R", "T"]
+    };
+
+    const timeSlots = {
+        "1": ["A", "B", "C", "D"],
+        "2": ["E","F", "G", "H", ],
+        "3": ["I", "J", "K", "L", ],
+        "4": ["M", "N", "O", "P"],
+        "5": ["Q", "R", "S", "T"],
+        "6": ["U", "V", "W"],
+        "7": ["X", "Y", "Z"]
+    };
+
+    const imagePaths = {
+        "winter_1": "winter/winter_1.png",
+        "winter_2": "winter/winter_2.png",
+        "winter_3": "winter/winter_3.png",
+        "winter_4": "winter/winter_4.png",
+        "winter_5": "winter/winter_5.png",
+        "winter_6": "winter/winter_6.png",
+        "winter_7": "winter/winter_7.png",
+
+        "spring_1": "spring/spring_1.png",
+        "spring_2": "spring/spring_2.png",
+        "spring_3": "spring/spring_3.png",
+        "spring_4": "spring/spring_4.png",
+        "spring_5": "spring/spring_5.png",
+        "spring_6": "spring/spring_6.png",
+        "spring_7": "spring/spring_7.png",
+
+        "summer_1": "summer/summer_1.png",
+        "summer_2": "summer/summer_2.png",
+        "summer_3": "summer/summer_3.png",
+        "summer_4": "summer/summer_4.png",
+        "summer_5": "summer/summer_5.png",
+        "summer_6": "summer/summer_6.png",
+        "summer_7": "summer/summer_7.png",
+
+        "fall_1": "fall/fall_1.png",
+        "fall_2": "fall/fall_2.png",
+        "fall_3": "fall/fall_3.png",
+        "fall_4": "fall/autumn_4.png",
+        "fall_5": "fall/fall_5.png",
+        "fall_6": "fall/fall_6.png",
+        "fall_7": "fall/fall_7.png"
+    };
+
+
+    let selectedSeason = null;
+    let selectedTimeSlot = null;
+
+    // Find the corresponding season
+    for (const [season, letters] of Object.entries(seasons)) {
+        if (letters.includes(input1)) {
+            selectedSeason = season;
+            break;
+        }
+    }
+
+    // Find the corresponding time slot
+    for (const [time, letters] of Object.entries(timeSlots)) {
+        if (letters.includes(input2)) {
+            selectedTimeSlot = time;
+            break;
+        }
+    }
+
+    // Get the image path from the mapping
+    const imageKey = `${selectedSeason}_${selectedTimeSlot}`;
+    const imagePath = imagePaths[imageKey];
+
+    // Display the correct image if found
+    if (imagePath) {
+        imgElement.src = imagePath;
+        imgElement.style.display = "block";
+    } else {
+        imgElement.src = "error.png";
+        errorElement.textContent = "Error: Please enter a single letter (A-Z) in both fields.";
+        imgElement.style.display = "block";
+    }
+}
+    </script>
+
+    <p id="errorMessage"></p>
+
+    <div class="rotated-text">
+        UNION SHADOWS
+    </div>
+
+
+</body>
+</html>
