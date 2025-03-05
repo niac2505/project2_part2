@@ -90,7 +90,7 @@ function displayImage() {
         "fall_1": "fall/fall_1.png",
         "fall_2": "fall/fall_2.png",
         "fall_3": "fall/fall_3.png",
-        "fall_4": "fall/autumn_4.png",
+        "fall_4": "fall/fall_4.png",
         "fall_5": "fall/fall_5.png",
         "fall_6": "fall/fall_6.png",
         "fall_7": "fall/fall_7.png"
@@ -100,7 +100,6 @@ function displayImage() {
     let selectedSeason = null;
     let selectedTimeSlot = null;
 
-    // Find the corresponding season
     for (const [season, letters] of Object.entries(seasons)) {
         if (letters.includes(input1)) {
             selectedSeason = season;
@@ -108,7 +107,6 @@ function displayImage() {
         }
     }
 
-    // Find the corresponding time slot
     for (const [time, letters] of Object.entries(timeSlots)) {
         if (letters.includes(input2)) {
             selectedTimeSlot = time;
@@ -116,11 +114,9 @@ function displayImage() {
         }
     }
 
-    // Get the image path from the mapping
     const imageKey = `${selectedSeason}_${selectedTimeSlot}`;
     const imagePath = imagePaths[imageKey];
 
-    // Display the correct image if found
     if (imagePath) {
         imgElement.src = imagePath;
         imgElement.style.display = "block";
